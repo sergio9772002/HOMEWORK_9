@@ -12,18 +12,25 @@ int getUserInt(string message)
 }
 int UserNumber1 = getUserInt("Введите M");
 int UserNumber2 = getUserInt("Введите N");
-int GetAkkerman(int M, int N)
+if (UserNumber1 >= 0 && UserNumber2 >=0)
 {
-        if (M == 0)
-        {
-            return N + 1;
-        } 
-        if (N == 0)
-        {
-            return GetAkkerman(M - 1, 1);
-        }
+    int GetAkkerman(int M, int N)
+    {
+            if (M == 0)
+            {
+                return N + 1;
+            } 
+            if (N == 0)
+            {
+                return GetAkkerman(M - 1, 1);
+            }
             return GetAkkerman(M - 1, GetAkkerman(M, N - 1));
  
+    }
+    int functionAkkerman = GetAkkerman(UserNumber1, UserNumber2);
+    Console.WriteLine($"Функция Аккермана для M и N равна {functionAkkerman}");
 }
-int functionAkkerman = GetAkkerman(UserNumber1, UserNumber2);
-Console.WriteLine($"Функция Аккермана для M и N равна {functionAkkerman}");
+else
+{
+    Console.WriteLine("M и N должны быть >= 0");
+}
